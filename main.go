@@ -4,10 +4,8 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
-	"log"
-
-	//"github.com/go-resty/resty/v2"
 	_ "github.com/go-sql-driver/mysql"
+	"log"
 )
 
 type Flight struct {
@@ -19,11 +17,11 @@ type Flight struct {
 	Price          string `json:"J"`
 }
 
-type Brand struct {
-	Brand_id   string
-	Brand_code string
-	Brand_des  string
-}
+//type Brand struct {
+//	Brand_id   string
+//	Brand_code string
+//	Brand_des  string
+//}
 
 func main() {
 
@@ -59,7 +57,7 @@ func main() {
 
 	//app := fiber.New()
 
-	// lưu dũ liệu lên mysql
+	// lưu data lên mysql
 	date := "2023-07-03 "
 	data := `[
 	 {
@@ -611,8 +609,8 @@ func main() {
 	}
 
 	for _, flight := range flights {
-		_, error := db.Exec("INSERT INTO flight(brand_id, flight_id, departure_time, arrival_time, price) VALUES(?, ?, ?, ?, ?)", flight.Brand_id, flight.Flight_id, date+flight.Departure_time+":00", date+flight.Arrival_time+":00", flight.Price)
-		if error != nil {
+		_, err = db.Exec("INSERT INTO flight(brand_id, flight_id, departure_time, arrival_time, price) VALUES(?, ?, ?, ?, ?)", flight.Brand_id, flight.Flight_id, date+flight.Departure_time+":00", date+flight.Arrival_time+":00", flight.Price)
+		if err != nil {
 			log.Fatal(err)
 		}
 
