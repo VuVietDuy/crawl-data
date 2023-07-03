@@ -25,7 +25,7 @@ type Flight struct {
 
 func main() {
 
-	// ket noi voi databse
+	// ket noi voi database
 	db, err := sql.Open("mysql", "root:vuvietduy1234@tcp(localhost:3306)/data")
 	if err != nil {
 		fmt.Println(err)
@@ -57,7 +57,7 @@ func main() {
 
 	//app := fiber.New()
 
-	// lưu data lên mysql
+	// luu data lên mysql
 	date := "2023-07-03 "
 	data := `[
 	 {
