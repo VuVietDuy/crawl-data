@@ -615,6 +615,7 @@ func main() {
 		if error != nil {
 			log.Fatal(err)
 		}
+
 	}
 
 	//app.Get("/api", func(c *fiber.Ctx) error {
