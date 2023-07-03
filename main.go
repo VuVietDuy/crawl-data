@@ -27,7 +27,7 @@ type Brand struct {
 
 func main() {
 
-	// ket noi voi db
+	// ket noi voi databse
 	db, err := sql.Open("mysql", "root:vuvietduy1234@tcp(localhost:3306)/data")
 	if err != nil {
 		fmt.Println(err)
