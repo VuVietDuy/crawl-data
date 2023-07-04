@@ -73,26 +73,26 @@ func main() {
 
 	app := fiber.New()
 
-	//app.Get("/api/getFlight", func(c *fiber.Ctx) error {
-	//	date := c.Query("date")
-	//
-	//	rows, err := db.Query("SELECT * FROM flight WHERE departure_time LIKE ?", date)
-	//	if err != nil {
-	//		fmt.Println(err)
-	//	}
-	//	defer rows.Close()
-	//
-	//	var flights []Flight
-	//	for rows.Next() {
-	//		var flight Flight
-	//		err = rows.Scan(&flight.ID, &flight.Flight_id, &flight.Brand_id, &flight.Departure_time, &flight.Arrival_time, &flight.Price)
-	//		if err != nil {
-	//			fmt.Println(err)
-	//		}
-	//		flights = append(flights, flight)
-	//	}
-	//	return c.JSON(flights)
-	//})
+	app.Get("/api/getFlight", func(c *fiber.Ctx) error {
+		date := c.Query("date")
+
+		rows, err := db.Query("SELECT * FROM flight WHERE DATE(departure_time) = ?", date)
+		if err != nil {
+			fmt.Println(err)
+		}
+		defer rows.Close()
+
+		var flights []Flight
+		for rows.Next() {
+			var flight Flight
+			err = rows.Scan(&flight.ID, &flight.Flight_id, &flight.Brand_id, &flight.Departure_time, &flight.Arrival_time, &flight.Price)
+			if err != nil {
+				fmt.Println(err)
+			}
+			flights = append(flights, flight)
+		}
+		return c.JSON(flights)
+	})
 
 	app.Get("/api/getFlight", func(c *fiber.Ctx) error {
 		rows, err := db.Query("SELECT * FROM flight")
