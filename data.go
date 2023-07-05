@@ -1,6 +1,6 @@
 package main
 
-var data = `[
+var datas = `[
 	 {
 	   "E": "VN",
 	   "F": "VN271",
