@@ -31,12 +31,6 @@ type D struct {
 	D string `json:"d"`
 }
 
-type Brand struct {
-	Brand_id   string
-	Brand_code string
-	Brand_des  string
-}
-
 func insertData(db *sql.DB, flights []Flight) {
 	date := "2023-07-03 "
 
