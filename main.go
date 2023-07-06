@@ -58,7 +58,7 @@ func insertData(db *sql.DB, flights []Flight) {
 
 func main() {
 
-	// ket noi voi database
+	// connect database
 	db, err := sql.Open("mysql", "root:@tcp(localhost:3306)/data")
 	if err != nil {
 		fmt.Println(err)
@@ -120,10 +120,10 @@ func main() {
 		fmt.Println(err)
 	}
 
-	//luu data lên mysql
+	//save data to mysql
 	//insertData(db, da.Flights)
 
-	//api tim kiem
+	//api search
 	app := fiber.New()
 
 	app.Get("/api", func(c *fiber.Ctx) error {
